@@ -496,7 +496,7 @@
 	if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
-    
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
     NSLog(@"heartRateMonitors: %@", self.heartRateMonitors);
     if ([[self.heartRateMonitors objectAtIndex: indexPath.row] isKindOfClass:[CBPeripheral class]]) {
@@ -509,6 +509,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath: indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     peripheral = [self.heartRateMonitors objectAtIndex: indexPath.row];
     [manager connectPeripheral: peripheral options:nil];
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
