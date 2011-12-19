@@ -285,6 +285,7 @@
 				48847AC1149FA5230056A70B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
