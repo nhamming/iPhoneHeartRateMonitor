@@ -9,6 +9,7 @@
 #import "HeartRateViewController.h"
 
 @interface HeartRateViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, retain) UIButton *batteryButton;
 @property (nonatomic, retain) UITableView *aTableView;
 @property (nonatomic, retain) UILabel *heartRateLabel;
 @property (nonatomic, retain) UILabel *manufacturerLabel;
@@ -18,6 +19,7 @@
 
 @implementation HeartRateViewController
 
+@synthesize batteryButton;
 @synthesize heartRate;
 @synthesize pulseTimer;
 @synthesize heartRateMonitors;
@@ -30,6 +32,7 @@
 @synthesize peripheralConnectMessage;
 
 - (void)dealloc {
+    self.batteryButton = nil;
     self.pulseTimer = nil;
     self.heartRateMonitors = nil;
     self.aTableView = nil;
@@ -155,12 +158,33 @@
 
 #pragma mark - Battery Data
 
-- (void)readValueForCharacteristic:(CBCharacteristic *)characteristic {
+- (IBAction)updateBatteryStatus {
+    CBService *batteryService = nil;
+    CBCharacteristic *batteryCharacteristic = nil;
+    for (CBService *service in peripheral.services) 
+    {
+        NSLog(@"peripheral services (UUID): %@", service.UUID);
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:@"e001"]]) {
+            batteryService = service;
+            NSLog(@"found battery service (UUID): %@", batteryService.UUID);
+        }
+        for (CBCharacteristic *characteristic in service.characteristics) 
+        {
+            NSLog(@"Characteristics (UUID): %@", characteristic.UUID);
+            if ([characteristic.UUID isEqual: [CBUUID UUIDWithString: @"e101"]]) {
+                batteryCharacteristic = characteristic;
+                NSLog(@"found battery characteristic (UUID): %@", batteryCharacteristic.UUID);                
+            }
+        }
+    }
     
-}
-
-- (void)updateBatteryStatus {
-    
+    if (batteryService) {
+        [peripheral discoverCharacteristics: nil forService: batteryService];
+    }
+    if (batteryCharacteristic) 
+    {
+        [peripheral readValueForCharacteristic: batteryCharacteristic];
+    }
 }
 
 #pragma mark - Start/Stop Scan methods

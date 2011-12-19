@@ -18,7 +18,8 @@
     uint16_t heartRate;
     BOOL autoConnect;
     
-    IBOutlet UIButton* connectButton;
+    IBOutlet UIButton *connectButton;
+    IBOutlet UIButton *batteryButton;
     IBOutlet UIActivityIndicatorView *progressIndicator;    
     IBOutlet UILabel *heartRateLabel;
     IBOutlet UILabel *connectionState;
@@ -35,6 +36,7 @@
 @property (copy) NSString *connected;
 
 - (IBAction) connectButtonPressed:(id)sender;
+- (IBAction)updateBatteryStatus;
 
 - (void) startScan;
 - (void) stopScan;
