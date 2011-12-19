@@ -99,9 +99,9 @@
         [self dismissPeripheralTable];
     }
     else
-    {   /* No outstanding connection, open peripheral table */
-        progressIndicator.hidden = NO;
-        [self displayPeripheralTable];
+    {   
+        /* check if connection exists. if so break it for a new device can connect */
+        [manager retrieveConnectedPeripherals];
     }
 }
 
@@ -223,6 +223,7 @@
  */
 - (void) centralManagerDidUpdateState:(CBCentralManager *)central 
 {
+    NSLog(@"centralManagerDidUpdateState");
     [self isLECapableHardware];
 }
 
@@ -268,11 +269,37 @@
 }
 
 /*
+ Invoked when the central manager retrieves the list of peripherals currently connected to the system.
+ */
+- (void)centralManager:(CBCentralManager *)central didRetrieveConnectedPeripherals:(NSArray *)peripherals 
+{
+    if ([peripherals count]) 
+    {
+        NSLog(@"connected peripherals: %@", peripherals);
+        CBPeripheral *aPeripheral = [peripherals objectAtIndex: 0];
+        /* reconnecting to the peripheral will break the connection. Cancelling the connection doesn't seem to work */
+        [manager connectPeripheral: aPeripheral options: nil];
+    } 
+    
+    if ([peripherals count] <= 1) 
+    {
+        /* No outstanding connection, open peripheral table */
+        progressIndicator.hidden = NO;
+        [self displayPeripheralTable];
+    } 
+    else 
+    {
+        [manager retrieveConnectedPeripherals];
+    }
+}
+
+/*
  Invoked whenever a connection is succesfully created with the peripheral. 
  Discover available services on the peripheral
  */
 - (void) centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)aPeripheral 
 {    
+    NSLog(@"didConnectPeripheral");
     [aPeripheral setDelegate:self];
     [aPeripheral discoverServices:nil];
 	
@@ -289,6 +316,7 @@
  */
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)aPeripheral error:(NSError *)error
 {
+    NSLog(@"didDisconnectPeripheral");
     [self.pulseTimer invalidate];
 	self.connected = @"Not connected";
     [connectButton setTitle:@"Connect" forState: UIControlStateNormal];
@@ -416,6 +444,7 @@
  */
 - (void) peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error 
 {
+    
     /* Updated value for heart rate measurement received */
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"2A37"]]) 
     {
