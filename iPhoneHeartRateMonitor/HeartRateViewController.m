@@ -45,69 +45,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.heartRateMonitors = [NSMutableArray array];
     manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 }
 
-#pragma mark - Scan sheet methods
+#pragma mark - Peripheral Table methods
 
-/* 
- Open scan sheet to discover heart rate peripherals if it is LE capable hardware 
- */
-- (IBAction)openScanSheet:(id)sender 
+- (void)displayPeripheralTable 
 {
     if( [self isLECapableHardware] )
     {
         autoConnect = FALSE;
-//        [heartRateMonitors removeAllObjects];
-//        [self.aTableView reloadData];
+        [self.aTableView reloadData];
         self.aTableView.hidden = NO;
         self.peripheralConnectMessage.hidden = NO;
-//        [NSApp beginSheet:self.scanSheet modalForWindow:self.window modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
+        [connectButton setTitle: @"Cancel" forState: UIControlStateNormal];
         [self startScan];
     }
 }
 
-/*
- Close scan sheet once device is selected
- */
-- (IBAction)closeScanSheet:(id)sender 
+- (void)dismissPeripheralTable
 {
-//    [NSApp endSheet:self.scanSheet returnCode:NSAlertDefaultReturn];
-//    [self.scanSheet orderOut:self];    
+    self.aTableView.hidden = YES;
+    progressIndicator.hidden = YES;
+    self.peripheralConnectMessage.hidden = YES;
+    [self.heartRateMonitors removeAllObjects];
 }
-
-/*
- Close scan sheet without choosing any device
- */
-- (IBAction)cancelScanSheet:(id)sender 
-{
-//    [NSApp endSheet:self.scanSheet returnCode:NSAlertAlternateReturn];
-//    [self.scanSheet orderOut:self];
-}
-/* 
- This method is called when Scan sheet is closed. Initiate connection to selected heart rate peripheral
- */
-//- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo 
-//{
-//    [self stopScan];
-//    if( returnCode == NSAlertDefaultReturn )
-//    {
-//        NSIndexSet *indexes = [self.arrayController selectionIndexes];
-//        if ([indexes count] != 0) 
-//        {
-//            NSUInteger anIndex = [indexes firstIndex];
-//            peripheral = [self.heartRateMonitors objectAtIndex:anIndex];
-//            [peripheral retain];
-//            [indicatorButton setHidden:FALSE];
-//            [progressIndicator setHidden:FALSE];
-//            [progressIndicator startAnimation:self];
-//            [connectButton setTitle:@"Cancel"];
-//            [manager connectPeripheral:peripheral options:nil];
-//        }
-//    }
-//}
 
 #pragma mark - Connect Button
 
@@ -123,18 +86,22 @@
     }
     else if (peripheral)
     {
-        /* Device is not connected, cancel pendig connection */
-//        [indicatorButton setHidden:TRUE];
+        /* Device is not connected, cancel pending connection */
         progressIndicator.hidden = YES;
-        [progressIndicator stopAnimating];
         [connectButton setTitle: @"Connect" forState: UIControlStateNormal];
         [manager cancelPeripheralConnection:peripheral];
-        [self openScanSheet:nil];
+        [self displayPeripheralTable];
+    }
+    else if (!self.aTableView.hidden)
+    {
+        /* cancelling connecting to peripheral. Peripherals detected, but not connected */
+        [connectButton setTitle: @"Connect" forState: UIControlStateNormal];
+        [self dismissPeripheralTable];
     }
     else
-    {   /* No outstanding connection, open scan sheet */
+    {   /* No outstanding connection, open peripheral table */
         progressIndicator.hidden = NO;
-        [self openScanSheet:nil];
+        [self displayPeripheralTable];
     }
 }
 
@@ -226,7 +193,7 @@
     
     NSLog(@"Central manager state: %@", state);
     
-    [self cancelScanSheet:nil];
+    [self dismissPeripheralTable];
     
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle: nil message: state delegate: nil cancelButtonTitle: @"OK" otherButtonTitles:nil] autorelease];
     [alert show];
@@ -293,7 +260,6 @@
     /* If there are any known devices, automatically connect to it.*/
     if([peripherals count] >=1)
     {
-//        [indicatorButton setHidden:FALSE];
         peripheral = [peripherals objectAtIndex:0];
         [peripheral retain];
         [connectButton setTitle:@"Cancel" forState: UIControlStateNormal];
@@ -312,7 +278,6 @@
 	
 	self.connected = @"Connected";
     [connectButton setTitle:@"Disconnect" forState: UIControlStateNormal];
-//    [indicatorButton setHidden:TRUE];
     self.aTableView.hidden = YES;
     progressIndicator.hidden = YES;
     self.peripheralConnectMessage.hidden = YES;
@@ -329,13 +294,11 @@
     [connectButton setTitle:@"Connect" forState: UIControlStateNormal];
     self.manufacturer = @"N/A";
     self.manufacturerLabel.text = self.manufacturer;
-    self.heartRate = 0;
+    self.heartRateLabel.text = @"bpm";
     [self.heartRateMonitors removeAllObjects];
-    [self.aTableView reloadData];
     if( peripheral )
     {
         [peripheral setDelegate:nil];
-        [peripheral release];
         peripheral = nil;
     }
 }
@@ -534,12 +497,10 @@
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
     
-//    cell.accessoryType = UITableViewCellAccessoryNone;
     
     NSLog(@"heartRateMonitors: %@", self.heartRateMonitors);
     if ([[self.heartRateMonitors objectAtIndex: indexPath.row] isKindOfClass:[CBPeripheral class]]) {
         cell.textLabel.text = [[self.heartRateMonitors objectAtIndex: indexPath.row] name];
-//        cell.detailTextLabel.text = [[self.heartRateMonitors objectAtIndex: indexPath.row] number];
     } else {
         cell.textLabel.text = @"Not a CBPeripheral!!";
     }
@@ -548,8 +509,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath: indexPath];
-//    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     peripheral = [self.heartRateMonitors objectAtIndex: indexPath.row];
     [manager connectPeripheral: peripheral options:nil];
     [tableView deselectRowAtIndexPath: indexPath animated: YES];

@@ -18,7 +18,6 @@
     uint16_t heartRate;
     BOOL autoConnect;
     
-    IBOutlet UIButton * indicatorButton;
     IBOutlet UIButton* connectButton;
     IBOutlet UIActivityIndicatorView *progressIndicator;    
     IBOutlet UILabel *heartRateLabel;
@@ -35,14 +34,14 @@
 @property (copy) NSString *manufacturer;
 @property (copy) NSString *connected;
 
-- (IBAction) openScanSheet:(id) sender;
-- (IBAction) closeScanSheet:(id)sender;
-- (IBAction) cancelScanSheet:(id)sender;
 - (IBAction) connectButtonPressed:(id)sender;
 
 - (void) startScan;
 - (void) stopScan;
 - (BOOL) isLECapableHardware;
+
+- (void) displayPeripheralTable;
+- (void) dismissPeripheralTable;
 
 - (void) pulse;
 - (void) updateWithHRMData:(NSData *)data;

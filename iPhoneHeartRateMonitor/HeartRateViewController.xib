@@ -135,7 +135,6 @@
 						<string key="NSFrame">{{102, 403}, {135, 37}}</string>
 						<reference key="NSSuperview" ref="999320612"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -202,7 +201,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Select preipheral to connect with</string>
+						<string key="IBUIText">Select peripheral to connect with</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -500,37 +499,23 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">HeartRateViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="cancelScanSheet:">id</string>
-						<string key="closeScanSheet:">id</string>
-						<string key="connectButtonPressed:">id</string>
-						<string key="openScanSheet:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="cancelScanSheet:">
-							<string key="name">cancelScanSheet:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="closeScanSheet:">
-							<string key="name">closeScanSheet:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="connectButtonPressed:">
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">connectButtonPressed:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">connectButtonPressed:</string>
+						<object class="IBActionInfo" key="NS.object.0">
 							<string key="name">connectButtonPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="openScanSheet:">
-							<string key="name">openScanSheet:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="aTableView">UITableView</string>
 						<string key="connectButton">UIButton</string>
 						<string key="connectionState">UILabel</string>
 						<string key="heartPulseImageView">UIImageView</string>
 						<string key="heartRateLabel">UILabel</string>
-						<string key="indicatorButton">UIButton</string>
 						<string key="manufacturerLabel">UILabel</string>
 						<string key="peripheralConnectMessage">UILabel</string>
 						<string key="progressIndicator">UIActivityIndicatorView</string>
@@ -555,10 +540,6 @@
 						<object class="IBToOneOutletInfo" key="heartRateLabel">
 							<string key="name">heartRateLabel</string>
 							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="indicatorButton">
-							<string key="name">indicatorButton</string>
-							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="manufacturerLabel">
 							<string key="name">manufacturerLabel</string>
