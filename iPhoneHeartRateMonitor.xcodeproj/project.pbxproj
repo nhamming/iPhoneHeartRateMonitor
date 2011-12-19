@@ -1,0 +1,292 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		48847AAC149FA5230056A70B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48847AAB149FA5230056A70B /* UIKit.framework */; };
+		48847AAE149FA5230056A70B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48847AAD149FA5230056A70B /* Foundation.framework */; };
+		48847AB0149FA5230056A70B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48847AAF149FA5230056A70B /* CoreGraphics.framework */; };
+		48847AB6149FA5230056A70B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 48847AB4149FA5230056A70B /* InfoPlist.strings */; };
+		48847AB8149FA5230056A70B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48847AB7149FA5230056A70B /* main.m */; };
+		48847ABC149FA5230056A70B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48847ABB149FA5230056A70B /* AppDelegate.m */; };
+		48847AC5149FA56A0056A70B /* Heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 48847AC2149FA56A0056A70B /* Heart.png */; };
+		48847AC6149FA56A0056A70B /* buttonSkin.png in Resources */ = {isa = PBXBuildFile; fileRef = 48847AC3149FA56A0056A70B /* buttonSkin.png */; };
+		48847AC7149FA56A0056A70B /* Human.png in Resources */ = {isa = PBXBuildFile; fileRef = 48847AC4149FA56A0056A70B /* Human.png */; };
+		48847ACB149FA57F0056A70B /* HeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48847AC9149FA57F0056A70B /* HeartRateViewController.m */; };
+		48847ACC149FA57F0056A70B /* HeartRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48847ACA149FA57F0056A70B /* HeartRateViewController.xib */; };
+		48847ACE149FA5990056A70B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48847ACD149FA5990056A70B /* CoreBluetooth.framework */; };
+		48847AD0149FA7030056A70B /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 48847ACF149FA7030056A70B /* icon.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		48847AA7149FA5220056A70B /* iPhoneHeartRateMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhoneHeartRateMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48847AAB149FA5230056A70B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		48847AAD149FA5230056A70B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		48847AAF149FA5230056A70B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		48847AB3149FA5230056A70B /* iPhoneHeartRateMonitor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iPhoneHeartRateMonitor-Info.plist"; sourceTree = "<group>"; };
+		48847AB5149FA5230056A70B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		48847AB7149FA5230056A70B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		48847AB9149FA5230056A70B /* iPhoneHeartRateMonitor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iPhoneHeartRateMonitor-Prefix.pch"; sourceTree = "<group>"; };
+		48847ABA149FA5230056A70B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		48847ABB149FA5230056A70B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		48847AC2149FA56A0056A70B /* Heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart.png; sourceTree = "<group>"; };
+		48847AC3149FA56A0056A70B /* buttonSkin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonSkin.png; sourceTree = "<group>"; };
+		48847AC4149FA56A0056A70B /* Human.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Human.png; sourceTree = "<group>"; };
+		48847AC8149FA57E0056A70B /* HeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateViewController.h; sourceTree = "<group>"; };
+		48847AC9149FA57F0056A70B /* HeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateViewController.m; sourceTree = "<group>"; };
+		48847ACA149FA57F0056A70B /* HeartRateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeartRateViewController.xib; sourceTree = "<group>"; };
+		48847ACD149FA5990056A70B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		48847ACF149FA7030056A70B /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		48847AA4149FA5220056A70B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48847ACE149FA5990056A70B /* CoreBluetooth.framework in Frameworks */,
+				48847AAC149FA5230056A70B /* UIKit.framework in Frameworks */,
+				48847AAE149FA5230056A70B /* Foundation.framework in Frameworks */,
+				48847AB0149FA5230056A70B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48847A9C149FA5220056A70B = {
+			isa = PBXGroup;
+			children = (
+				48847AB1149FA5230056A70B /* iPhoneHeartRateMonitor */,
+				48847AAA149FA5230056A70B /* Frameworks */,
+				48847AA8149FA5220056A70B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		48847AA8149FA5220056A70B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48847AA7149FA5220056A70B /* iPhoneHeartRateMonitor.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48847AAA149FA5230056A70B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48847ACD149FA5990056A70B /* CoreBluetooth.framework */,
+				48847AAB149FA5230056A70B /* UIKit.framework */,
+				48847AAD149FA5230056A70B /* Foundation.framework */,
+				48847AAF149FA5230056A70B /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		48847AB1149FA5230056A70B /* iPhoneHeartRateMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				48847ABA149FA5230056A70B /* AppDelegate.h */,
+				48847ABB149FA5230056A70B /* AppDelegate.m */,
+				48847AC8149FA57E0056A70B /* HeartRateViewController.h */,
+				48847AC9149FA57F0056A70B /* HeartRateViewController.m */,
+				48847ACA149FA57F0056A70B /* HeartRateViewController.xib */,
+				48847AB2149FA5230056A70B /* Supporting Files */,
+			);
+			path = iPhoneHeartRateMonitor;
+			sourceTree = "<group>";
+		};
+		48847AB2149FA5230056A70B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				48847ACF149FA7030056A70B /* icon.png */,
+				48847AC2149FA56A0056A70B /* Heart.png */,
+				48847AC3149FA56A0056A70B /* buttonSkin.png */,
+				48847AC4149FA56A0056A70B /* Human.png */,
+				48847AB3149FA5230056A70B /* iPhoneHeartRateMonitor-Info.plist */,
+				48847AB4149FA5230056A70B /* InfoPlist.strings */,
+				48847AB7149FA5230056A70B /* main.m */,
+				48847AB9149FA5230056A70B /* iPhoneHeartRateMonitor-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		48847AA6149FA5220056A70B /* iPhoneHeartRateMonitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48847ABF149FA5230056A70B /* Build configuration list for PBXNativeTarget "iPhoneHeartRateMonitor" */;
+			buildPhases = (
+				48847AA3149FA5220056A70B /* Sources */,
+				48847AA4149FA5220056A70B /* Frameworks */,
+				48847AA5149FA5220056A70B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iPhoneHeartRateMonitor;
+			productName = iPhoneHeartRateMonitor;
+			productReference = 48847AA7149FA5220056A70B /* iPhoneHeartRateMonitor.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48847A9E149FA5220056A70B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = UHN;
+			};
+			buildConfigurationList = 48847AA1149FA5220056A70B /* Build configuration list for PBXProject "iPhoneHeartRateMonitor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 48847A9C149FA5220056A70B;
+			productRefGroup = 48847AA8149FA5220056A70B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48847AA6149FA5220056A70B /* iPhoneHeartRateMonitor */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		48847AA5149FA5220056A70B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48847AB6149FA5230056A70B /* InfoPlist.strings in Resources */,
+				48847AC5149FA56A0056A70B /* Heart.png in Resources */,
+				48847AC6149FA56A0056A70B /* buttonSkin.png in Resources */,
+				48847AC7149FA56A0056A70B /* Human.png in Resources */,
+				48847ACC149FA57F0056A70B /* HeartRateViewController.xib in Resources */,
+				48847AD0149FA7030056A70B /* icon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		48847AA3149FA5220056A70B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48847AB8149FA5230056A70B /* main.m in Sources */,
+				48847ABC149FA5230056A70B /* AppDelegate.m in Sources */,
+				48847ACB149FA57F0056A70B /* HeartRateViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		48847AB4149FA5230056A70B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48847AB5149FA5230056A70B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		48847ABD149FA5230056A70B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		48847ABE149FA5230056A70B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		48847AC0149FA5230056A70B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iPhoneHeartRateMonitor/iPhoneHeartRateMonitor-Prefix.pch";
+				INFOPLIST_FILE = "iPhoneHeartRateMonitor/iPhoneHeartRateMonitor-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		48847AC1149FA5230056A70B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iPhoneHeartRateMonitor/iPhoneHeartRateMonitor-Prefix.pch";
+				INFOPLIST_FILE = "iPhoneHeartRateMonitor/iPhoneHeartRateMonitor-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48847AA1149FA5220056A70B /* Build configuration list for PBXProject "iPhoneHeartRateMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48847ABD149FA5230056A70B /* Debug */,
+				48847ABE149FA5230056A70B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48847ABF149FA5230056A70B /* Build configuration list for PBXNativeTarget "iPhoneHeartRateMonitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48847AC0149FA5230056A70B /* Debug */,
+				48847AC1149FA5230056A70B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 48847A9E149FA5220056A70B /* Project object */;
+}
